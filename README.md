@@ -29,7 +29,9 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
----
+--- In the system, each song is categorized in features like genre and mood along with numerical features such as energy, temp, valence, danceability, and acousticness. The UserProfile stores the listener's preferred features like genre, mood, energy level, and whether they like more acoustic tracks. And the recommender then computes a score for each song by giving strong credit for genre and mood matches, along with numeric features matches, where songs are closer to user target values. After all scoring of the songs, the system ranks the songs from higest to lowest and returns the top songs as recommendations.
+
+--- This recommender represents each song using genre, mood, and numeric features, like energy, and compares those to a user profile with favorite genre, favorite mood, and target energy; the finalized Algorithm Recipe is to start every song at 0.0 points, add 2.0 for a genre match, add 1.0 for a mood match, compute energy similarity with d = abs(song_energy - target_energy), s = max(0.0, 1.0 - d), and energy_points = 2.0 * s, then total score = genre_points + mood_points + energy_points, sort all songs from highest to lowest score, and return the top k recommendations. A potential bias is that this system can over-prioritize genre and under-recommend strong mood/energy matches from other genres.
 
 ## Getting Started
 
@@ -209,3 +211,5 @@ A few sentences about what you learned:
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
 
+
+![alt text](image.png)
